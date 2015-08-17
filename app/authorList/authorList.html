@@ -1,0 +1,25 @@
+<div class='authorListContainer grid'>
+    <div class='page-header'>
+        <h2>Authors</h2>
+    </div>
+    <div class='row'>
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Birth Date</th>
+                    <th>Bio</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat='author in authors' class='author trst-group-item'>
+                <td class='name'>{{author.name}}</td>
+                <td class='birthdate'>{{author.birthdate | date : format : longDate}}</td>
+                <td class='bio'>{{author.bio}}</td>
+                <td class='delete'><button type='button' class='btn btn-xs btn-warning' ng-disabled="author.books.length" ng-click="deleteAuthor(author)">Delete</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

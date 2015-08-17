@@ -1,0 +1,27 @@
+<div class='bookListContainer grid'>
+    <div class='page-header'>
+        <h2>Books</h2>
+    </div>
+    <div class="row"><button type='button' class='btn btn-primary' ng-click='createBook()'>Create Book</button></div>
+    <div class='row'>
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>ISBN</th>
+                    <th>Pages</th>
+                    <th>Author</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat='book in books.list' class='book trst-group-item'>
+                <td class='title'>{{book.title}}</td>
+                <td class='isbn'>{{book.isbn}}</td>
+                <td class='pages'>{{book.pages}}</td>
+                <td class='author'>{{book.author.name}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row"><button type='button' class='btn btn-primary' ng-click='createBook()'>Create Book</button></div>
+</div>

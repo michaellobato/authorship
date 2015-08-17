@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Manage Books</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body ng-app="lobato-authorship" class="theme1 container">
+    <div class="jumbotron">
+        <h1>Manage Books and Authors</h1>
+    </div>
+    <div ng-view></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.4.0/js/ngDialog.min.js"></script>
+    <!-- TODO: use grunt or something for one file.. -->
+    <script src="authorship.js"></script>
+    <script src="BookService.js"></script>
+    <script src="AuthorService.js"></script>
+    <script src="bookList/book-list-directive.js"></script>
+    <script src="authorList/author-list-directive.js"></script>
+</body>
+</html>
