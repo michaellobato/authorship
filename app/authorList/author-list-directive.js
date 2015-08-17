@@ -1,5 +1,7 @@
 angular.module('lobato-authorship').directive('authorList', ["$location", "AuthorService",
     function($location, AuthorService){
+        "use strict";
+
         return {
             scope: {},
             restrict: 'E',

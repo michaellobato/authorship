@@ -1,5 +1,7 @@
-angular.module("lobato-authorship").directive('bookList', ["$location", "BookService",
-    function($location, BookService){
+angular.module("lobato-authorship").directive('bookList', ["$location", "BookService", "ngDialog",
+    function($location, BookService, ngDialog){
+        "use strict";
+
         return {
             scope: {},
             restrict: 'E',
@@ -9,8 +11,10 @@ angular.module("lobato-authorship").directive('bookList', ["$location", "BookSer
                 BookService.getBooks().then(function (books) {
                     $scope.books = books;
                 });
+
                 $scope.createBook = function() {
-                }
+                    ngDialog.open({ template: 'bookList/createBook.html' });
+                };
             }
         };
     }

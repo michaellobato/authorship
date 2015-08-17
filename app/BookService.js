@@ -1,5 +1,7 @@
 angular.module("lobato-authorship").factory('BookService', ['$q',
     function($q){
+        "use strict";
+
         var instance = {};
         var getBooksPromise;
         var books = {
