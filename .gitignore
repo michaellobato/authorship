@@ -1,0 +1,16 @@
+# node.js install
+node_modules/
+
+# sublime
+*.sublime*
+
+# compiled CSS files
+*.css
+
+# build output
+build/
+
+# local settings
+grunt.config
+npm-debug.log
+*.DS_Store
