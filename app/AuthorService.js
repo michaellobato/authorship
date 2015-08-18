@@ -5,6 +5,7 @@ angular.module("lobato-authorship").factory('AuthorService', ['$q',
         var instance = {};
         var getAuthorsPromise;
         var authors;
+        var fakeIdCount;
 
         function getRandomBirthdate() {
             var start = new Date(1900, 0, 1);
@@ -52,6 +53,8 @@ angular.module("lobato-authorship").factory('AuthorService', ['$q',
             getAuthorsPromise = def.promise.then(function(serverAuthors) {
                 //if authorList were an arry, turn it into a map
                 authors = serverAuthors;
+                fakeIdCount = _.size(authors) + 1;
+
                 return authors;
             }, function(reason) {
                 //TODO: handle errors
@@ -67,7 +70,7 @@ angular.module("lobato-authorship").factory('AuthorService', ['$q',
 
         instance.createAuthor = function(name, bio, birthdate, bookIds) {
             //TODO: send this to the server and create the object in the success of the call.
-            var newFakeId = _.size(authors);
+            var newFakeId = fakeIdCount++;
             authors[newFakeId] = {
                 id: newFakeId,
                 name: name,

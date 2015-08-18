@@ -11,6 +11,7 @@
                     <th>ISBN</th>
                     <th>Pages</th>
                     <th>Author</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -19,6 +20,7 @@
                 <td class='isbn'>{{book.isbn}}</td>
                 <td class='pages'>{{book.pages}}</td>
                 <td class='author'>{{::getAuthorName(book.authorId)}}</td>
+                <td class='delete'><button type='button' class='btn btn-xs btn-warning' ng-click="deleteBook(book)">Delete</button></td>
             </tr>
             </tbody>
         </table>

@@ -89,6 +89,10 @@ angular.module("lobato-authorship").factory('BookService', ['$q',
             return book;
         };
 
+        instance.deleteBook = function(book) {
+            books.list = _.without(books.list, book);
+        };
+
         return instance;
     }
 ]);

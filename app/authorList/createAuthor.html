@@ -1,0 +1,9 @@
+<div>
+    <h2 class="title">Enter Author Information</h2>
+    <form class="grid" ng-submit='createAuthor()'>
+        <label class="row">Name<input type="text" max="250" ng-model="name" required</input></label>
+        <label class="row">Bio<textarea type="string" max="250" ng-model="bio"></textarea></label>
+        <label class="row">Birth Date<input type="date" ng-model="birthdate" required></input></label>
+        <p><button class='btn btn-primary create row' type='submit'>Create</button></p>
+    </form>
+</div>

@@ -1,5 +1,5 @@
-angular.module("lobato-authorship").directive('bookList', ["$location", "ngDialog", "BookService", "AuthorService",
-    function($location, ngDialog, BookService, AuthorService){
+angular.module("lobato-authorship").directive('bookList', ["ngDialog", "BookService", "AuthorService",
+    function(ngDialog, BookService, AuthorService){
         "use strict";
 
         return {
@@ -16,6 +16,11 @@ angular.module("lobato-authorship").directive('bookList', ["$location", "ngDialo
                 AuthorService.getAuthors().then(function(serviceAuthors) {
                     authors = serviceAuthors;
                 });
+
+                $scope.deleteBook = function(book) {
+                    BookService.deleteBook(book);
+                    AuthorService.removeBookFromAuthor(book.authorId, book.id);
+                };
 
                 $scope.createBookDialog = function() {
                     ngDialog.open({

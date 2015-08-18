@@ -1,5 +1,5 @@
-angular.module('lobato-authorship').directive('authorList', ["$location", "AuthorService",
-    function($location, AuthorService){
+angular.module('lobato-authorship').directive('authorList', ["ngDialog", "AuthorService",
+    function(ngDialog, AuthorService){
         "use strict";
 
         return {
@@ -13,6 +13,14 @@ angular.module('lobato-authorship').directive('authorList', ["$location", "Autho
 
                 $scope.deleteAuthor = function(author) {
                     AuthorService.deleteAuthor(author.id);
+                };
+
+                $scope.createAuthorDialog = function() {
+                    ngDialog.open({
+                        template: 'authorList/createAuthor.html',
+                        className: 'createAuthorModal',
+                        controller: 'CreateAuthorController'
+                    });
                 };
             }
         };

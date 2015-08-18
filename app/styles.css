@@ -1,8 +1,10 @@
-.theme1 .createBookModal .title {
+.theme1 .createBookModal .title,
+.theme1 .createAuthorModal .title {
   text-align: center;
   margin-top: 0px;
 }
-.theme1 .createBookModal .ngdialog-content {
+.theme1 .createBookModal .ngdialog-content,
+.theme1 .createAuthorModal .ngdialog-content {
   position: fixed;
   width: 500px;
   height: 275px;
@@ -12,7 +14,8 @@
   margin-top: -137.5px;
   padding: 1.8em 2em;
 }
-.theme1 .createBookModal .ngdialog-close {
+.theme1 .createBookModal .ngdialog-close,
+.theme1 .createAuthorModal .ngdialog-close {
   border: 1px solid black;
   border-radius: 2px;
   cursor: pointer;
@@ -20,14 +23,20 @@
   right: 0;
   top: 0;
 }
-.theme1 .createBookModal .create {
+.theme1 .createBookModal .create,
+.theme1 .createAuthorModal .create {
   margin-top: 20px;
   float: left;
 }
-.theme1 .createBookModal .row {
+.theme1 .createBookModal .row,
+.theme1 .createAuthorModal .row {
   display: block;
 }
 .theme1 .createBookModal .row input,
-.theme1 .createBookModal .row select {
+.theme1 .createAuthorModal .row input,
+.theme1 .createBookModal .row select,
+.theme1 .createAuthorModal .row select,
+.theme1 .createBookModal .row textarea,
+.theme1 .createAuthorModal .row textarea {
   margin-left: 5px;
 }
