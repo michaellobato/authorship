@@ -60,6 +60,11 @@ angular.module("lobato-authorship").factory('AuthorService', ['$q',
             return getAuthorsPromise;
         };
 
+        instance.addBookToAuthor = function(authorId, bookId) {
+            authors[authorId].books.push(bookId);
+            console.log(authors[authorId]);
+        };
+
         instance.createAuthor = function(name, bio, birthdate, bookIds) {
             //TODO: send this to the server and create the object in the success of the call.
             var newFakeId = _.size(authors);
@@ -70,6 +75,10 @@ angular.module("lobato-authorship").factory('AuthorService', ['$q',
                 birthdate: birthdate,
                 books: bookIds
             };
+        };
+
+        instance.removeBookFromAuthor = function(authorId, bookId) {
+            authors[authorId].books = _.without(authors[authorId].books, bookId);
         };
 
         instance.deleteAuthor = function(authorId) {

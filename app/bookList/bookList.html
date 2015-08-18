@@ -2,7 +2,7 @@
     <div class='page-header'>
         <h2>Books</h2>
     </div>
-    <div class="row"><button type='button' class='btn btn-primary' ng-click='createBook()'>Create Book</button></div>
+    <div class="row"><button type='button' class='btn btn-primary' ng-click='createBookDialog()'>Create Book</button></div>
     <div class='row'>
         <table class='table'>
             <thead>
@@ -18,10 +18,10 @@
                 <td class='title'>{{book.title}}</td>
                 <td class='isbn'>{{book.isbn}}</td>
                 <td class='pages'>{{book.pages}}</td>
-                <td class='author'>{{book.author.name}}</td>
+                <td class='author'>{{::getAuthorName(book.authorId)}}</td>
             </tr>
             </tbody>
         </table>
     </div>
-    <div class="row"><button type='button' class='btn btn-primary' ng-click='createBook()'>Create Book</button></div>
+    <div class="row"><button type='button' class='btn btn-primary' ng-click='createBookDialog()'>Create Book</button></div>
 </div>

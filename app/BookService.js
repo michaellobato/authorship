@@ -13,7 +13,7 @@ angular.module("lobato-authorship").factory('BookService', ['$q',
         }
 
         function getFakePages () {
-            return Math.floor(Math.random() * (100000 - 100)) + 100;
+            return Math.floor(Math.random() * (10000 - 100)) + 100;
         }
 
         instance.getBooks = function() {
@@ -76,9 +76,18 @@ angular.module("lobato-authorship").factory('BookService', ['$q',
             return getBooksPromise;
         };
 
-        // instance.addBook = function(book) {
-        //     books[book.id] = book;
-        // }
+        instance.createBook = function(title, isbn, pages, authorId) {
+            var book = {};
+            var newFakeId = _.size(books.list);
+            book.id = newFakeId;
+            book.title = title;
+            book.isbn = isbn;
+            book.pages = pages;
+            book.authorId = authorId;
+
+            books.list.push(book);
+            return book;
+        };
 
         return instance;
     }
