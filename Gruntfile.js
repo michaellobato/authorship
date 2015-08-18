@@ -11,6 +11,7 @@ module.exports = function(grunt) {
         // We have to specify the first element separately because the module file has to be included first
         js: ['app/authorship.js', 'app/*.js', 'app/**/*.js'],
         html: 'app/**/*.html',
+        less: 'app/**/*.less',
         css: 'app/**/*.css'
       }
     },
@@ -62,6 +63,22 @@ module.exports = function(grunt) {
       build: {
         src: '<%= app.src.js %>',
         dest: '<%= app.buildDir %>/app/<%= pkg.name %>.min.js'
+      }
+    },
+    watch: {
+      htmlAndLess: {
+        files: ['<%= app.src.html %>', '<%= app.src.less %>'],
+        tasks: ['buildPartial'],
+        options: {
+          spawn: false
+        }
+      },
+      js: {
+        files: ['<%= app.src.js %>'],
+        tasks: ['jshint', 'uglify'],
+        options: {
+          spawn: false
+        }
       }
     },
     clean: {
