@@ -65,7 +65,6 @@ angular.module("lobato-authorship").factory('AuthorService', ['$q',
 
         instance.addBookToAuthor = function(authorId, bookId) {
             authors[authorId].books.push(bookId);
-            console.log(authors[authorId]);
         };
 
         instance.createAuthor = function(name, bio, birthdate, bookIds) {
@@ -76,7 +75,7 @@ angular.module("lobato-authorship").factory('AuthorService', ['$q',
                 name: name,
                 bio: bio,
                 birthdate: birthdate,
-                books: bookIds
+                books: bookIds || []
             };
         };
 
