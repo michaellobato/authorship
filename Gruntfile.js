@@ -1,7 +1,9 @@
 module.exports = function(grunt) {
   "use strict";
 
-  require('jit-grunt')(grunt);
+  require('jit-grunt')(grunt, {
+    ngtemplates: 'grunt-angular-templates'
+  });
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -26,11 +28,21 @@ module.exports = function(grunt) {
         }
       },
     },
+    ngtemplates: {
+      app: {
+        options: {
+          base: 'app/',
+          module: 'lobato-authorship'
+        },
+        src: '<%= app.src.html %>',
+        dest: '<%= app.buildDir %>/templates.js'
+      }
+    },
     copy: {
       app: {
         expand: true,
         flatten: false,
-        src: ['<%= app.src.html %>', '<%= app.src.css %>'],
+        src: ['<%= app.src.css %>'],
         dest: '<%= app.buildDir %>'
       },
       lib: {
@@ -56,18 +68,18 @@ module.exports = function(grunt) {
     jshint: {
       files: ['Gruntfile.js', '<%= app.src.js %>']
     },
-    uglify: {
+    concat: {
       options: {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
-        src: '<%= app.src.js %>',
-        dest: '<%= app.buildDir %>/app/<%= pkg.name %>.min.js'
+        src: ['<%= app.src.js %>', '<%= app.buildDir %>/templates.js'],
+        dest: '<%= app.buildDir %>/app/<%= pkg.name %>.js'
       }
     },
     watch: {
-      htmlAndLess: {
-        files: ['<%= app.src.html %>', '<%= app.src.less %>'],
+      less: {
+        files: ['<%= app.src.less %>'],
         tasks: ['buildPartial'],
         options: {
           spawn: false
@@ -75,7 +87,14 @@ module.exports = function(grunt) {
       },
       js: {
         files: ['<%= app.src.js %>'],
-        tasks: ['jshint', 'uglify'],
+        tasks: ['jshint', 'concat'],
+        options: {
+          spawn: false
+        }
+      },
+      html: {
+        files: ['<%= app.src.html %>'],
+        tasks: ['ngtemplates', 'concat'],
         options: {
           spawn: false
         }
@@ -89,9 +108,10 @@ module.exports = function(grunt) {
   grunt.registerTask('buildPartial',
   [
       'less',
-      'copy'
+      'copy',
+      'ngtemplates'
   ]);
 
-  grunt.registerTask('build', ['buildPartial', 'jshint', 'uglify']);
+  grunt.registerTask('build', ['buildPartial', 'jshint', 'concat']);
   grunt.registerTask('default', ['build']);
 };

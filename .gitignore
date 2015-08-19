@@ -5,10 +5,10 @@ node_modules/
 *.sublime*
 
 # compiled CSS files
-*.css
+app/styles.css
 
 # build output
-build/
+#build/
 
 # local settings
 grunt.config

@@ -5,7 +5,7 @@ angular.module("lobato-authorship").directive('bookList', ["ngDialog", "BookServ
         return {
             scope: {},
             restrict: 'E',
-            templateUrl: "bookList/bookList.html",
+            templateUrl: "app/bookList/bookList.html",
             link: function($scope, iElm, iAttrs, controller) {
                 var authors = {};
                 //TODO: obviously there are lots of things to consider here like loading spinners and searching functionality.
@@ -24,7 +24,7 @@ angular.module("lobato-authorship").directive('bookList', ["ngDialog", "BookServ
 
                 $scope.createBookDialog = function() {
                     ngDialog.open({
-                        template: 'bookList/createBook.html',
+                        template: 'app/bookList/createBook.html',
                         className: 'createBookModal',
                         controller: 'CreateBookController'
                     });

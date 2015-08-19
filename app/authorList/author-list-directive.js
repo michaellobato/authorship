@@ -5,7 +5,7 @@ angular.module('lobato-authorship').directive('authorList', ["ngDialog", "Author
         return {
             scope: {},
             restrict: 'E',
-            templateUrl: "authorList/authorList.html",
+            templateUrl: "app/authorList/authorList.html",
             link: function($scope, iElm, iAttrs) {
                 AuthorService.getAuthors().then(function(authors) {
                     $scope.authors = authors;
@@ -17,7 +17,7 @@ angular.module('lobato-authorship').directive('authorList', ["ngDialog", "Author
 
                 $scope.createAuthorDialog = function() {
                     ngDialog.open({
-                        template: 'authorList/createAuthor.html',
+                        template: 'app/authorList/createAuthor.html',
                         className: 'createAuthorModal',
                         controller: 'CreateAuthorController'
                     });

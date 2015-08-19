@@ -10,7 +10,7 @@ angular.module("lobato-authorship").config(['$routeProvider',
         //     template: ""
         // }).
         otherwise({
-            templateUrl: "dualList/dualList.html"
+            templateUrl: "app/dualList/dualList.html"
         });
     }
 ]);
