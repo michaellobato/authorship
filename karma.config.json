@@ -1,0 +1,19 @@
+{
+    "browsers": ["PhantomJS"],
+    "singleRun": true,
+    "files": [
+        "node_modules/angular/angular.js",
+        "node_modules/angular-mocks/angular-mocks.js",
+        "node_modules/angular-route/angular-route.js",
+        "node_modules/bootstrap/dist/css/bootstrap.css",
+        "node_modules/ng-dialog/js/ngDialog.js",
+        "node_modules/underscore/underscore.js",
+
+        "app/authorship.js",
+        "app/**/*.js",
+        "app/**/*.html",
+        "test/unit/**/*.js"
+    ],
+
+    "frameworks": ["jasmine"]
+}

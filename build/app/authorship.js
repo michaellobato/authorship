@@ -1,4 +1,4 @@
-/*! authorship 2015-08-18 */
+/*! authorship 2015-08-29 */
 //put everything in this one file for simplicity
 angular.module("lobato-authorship", ["ngRoute", "ngDialog"]);
 
@@ -81,10 +81,18 @@ angular.module("lobato-authorship").factory('AuthorService', ['$q',
         };
 
         instance.addBookToAuthor = function(authorId, bookId) {
+            if(!getAuthorsPromise) {
+                //TODO: once this is a server call, remove this error checking. For now, cannot call this function until getAuthors has been called.
+                throw new Error("cannot add book to author until authors have been retrieved.");
+            }
             authors[authorId].books.push(bookId);
         };
 
         instance.createAuthor = function(name, bio, birthdate, bookIds) {
+            if(!getAuthorsPromise) {
+                //TODO: once this is a server call, remove this error checking. For now, cannot call this function until getAuthors has been called.
+                throw new Error("cannot create author until authors have been retrieved.");
+            }
             //TODO: send this to the server and create the object in the success of the call.
             var newFakeId = fakeIdCount++;
             authors[newFakeId] = {
@@ -97,10 +105,18 @@ angular.module("lobato-authorship").factory('AuthorService', ['$q',
         };
 
         instance.removeBookFromAuthor = function(authorId, bookId) {
+            if(!getAuthorsPromise) {
+                //TODO: once this is a server call, remove this error checking. For now, cannot call this function until getAuthors has been called.
+                throw new Error("cannot remove book from author until authors have been retrieved.");
+            }
             authors[authorId].books = _.without(authors[authorId].books, bookId);
         };
 
         instance.deleteAuthor = function(authorId) {
+            if(!getAuthorsPromise) {
+                //TODO: once this is a server call, remove this error checking. For now, cannot call this function until getAuthors has been called.
+                throw new Error("cannot delete author until authors have been retrieved.");
+            }
             //TODO: send this to the server and create the object in the success of the call.
             delete authors[authorId];
         };

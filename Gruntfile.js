@@ -7,6 +7,7 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    karmaConfig: grunt.file.readJSON('karma.config.json'),
     app: {
       buildDir: "build",
       src: {
@@ -102,6 +103,15 @@ module.exports = function(grunt) {
     },
     clean: {
       build: ['build']
+    },
+    karma: {
+      options: '<%= karmaConfig %>',
+      dev: {
+        options: {
+          singleRun: true,
+          browsers: ["PhantomJS"]
+        }
+      }
     }
   });
 
@@ -112,6 +122,6 @@ module.exports = function(grunt) {
       'ngtemplates'
   ]);
 
-  grunt.registerTask('build', ['buildPartial', 'jshint', 'concat']);
+  grunt.registerTask('build', ['buildPartial', 'jshint', 'concat', "karma"]);
   grunt.registerTask('default', ['build']);
 };
